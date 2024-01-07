@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  actix_web:
+    build:
+      context: actix_web_sample
+      dockerfile: Dockerfile
+    volumes:
+      - ./actix_web_sample:/usr/src/actix_web_sample
+    command: ["/usr/local/cargo/bin/actix_web_sample"]
+    ports:
+      - "8080:8080"
