@@ -6,6 +6,21 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./actix_web_sample:/usr/src/actix_web_sample
+      - cargo-cache:/usr/local/cargo/registry
     command: ["/usr/local/cargo/bin/actix_web_sample"]
     ports:
       - "8080:8080"
+
+  axum:
+    build:
+      context: axum_sample
+      dockerfile: Dockerfile
+    volumes:
+      - ./axum_sample:/usr/src/axum_sample
+      - cargo-cache:/usr/local/cargo/registry
+    command: ["/usr/local/cargo/bin/axum_sample"]
+    ports:
+      - "8081:8081"
+
+volumes:
+  cargo-cache:

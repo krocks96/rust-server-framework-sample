@@ -1,4 +1,5 @@
 use actix_web::{get, App, HttpResponse, HttpServer, Responder};
+use serde_json::json;
 
 // HTTPサーバ起動
 pub async fn http_start(addr: &str, port: u16) -> std::io::Result<()> {
@@ -13,5 +14,5 @@ pub async fn http_start(addr: &str, port: u16) -> std::io::Result<()> {
 
 #[get("/hello")]
 async fn hello() -> impl Responder {
-    HttpResponse::Ok().body("Hello world!")
+    HttpResponse::Ok().json(json!({"message": "Hello, world!"}))
 }
