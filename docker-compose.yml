@@ -44,5 +44,16 @@ services:
     ports:
       - "8083:8083"
 
+  poem:
+    build:
+      context: poem_sample
+      dockerfile: Dockerfile
+    volumes:
+      - ./poem_sample:/usr/src/poem_sample
+      - cargo-cache:/usr/local/cargo/registry
+    command: ["/usr/local/cargo/bin/poem_sample"]
+    ports:
+      - "8084:8084"
+
 volumes:
   cargo-cache:
