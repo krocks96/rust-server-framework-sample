@@ -15,6 +15,7 @@ fn hello() -> Json<Message> {
 
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
+    println!("launching server...");
     let app = Route::new().at("/hello", get(hello));
     Server::new(TcpListener::bind("0.0.0.0:8084"))
         .run(app)

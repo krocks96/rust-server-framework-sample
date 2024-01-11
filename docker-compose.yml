@@ -55,5 +55,16 @@ services:
     ports:
       - "8084:8084"
 
+  warp:
+    build:
+      context: warp_sample
+      dockerfile: Dockerfile
+    volumes:
+      - ./poem_sample:/usr/src/warp_sample
+      - cargo-cache:/usr/local/cargo/registry
+    command: ["/usr/local/cargo/bin/warp_sample"]
+    ports:
+      - "8085:8085"
+
 volumes:
   cargo-cache:
