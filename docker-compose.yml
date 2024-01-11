@@ -30,9 +30,19 @@ services:
       - ./rocket_sample:/usr/src/rocket_sample
       - cargo-cache:/usr/local/cargo/registry
     command: ["/usr/local/cargo/bin/rocket_sample"]
-    # command: ["cargo run"]
     ports:
       - "8082:8082"
+
+  salvo:
+    build:
+      context: salvo_sample
+      dockerfile: Dockerfile
+    volumes:
+      - ./salvo_sample:/usr/src/salvo_sample
+      - cargo-cache:/usr/local/cargo/registry
+    command: ["/usr/local/cargo/bin/salvo_sample"]
+    ports:
+      - "8083:8083"
 
 volumes:
   cargo-cache:
